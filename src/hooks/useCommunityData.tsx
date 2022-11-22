@@ -123,13 +123,13 @@ const useCommunityData = () => {
 
   const getCommunityData = async (communityId: string) => {
     try {
-      const communityDocRef = doc(firestore, "communities", communityId);
+      const communityDocRef = doc(firestore, "communities", communityId as string);
       const communityDoc = await getDoc(communityDocRef);
 
       setCommuintyStatevalue((prev) => ({
         ...prev,
         currentCommunity: {
-          id: communityDoc.id,
+          communityId,
           ...(communityDoc.data() as Community),
         },
       }));
